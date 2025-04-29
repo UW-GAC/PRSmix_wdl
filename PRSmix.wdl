@@ -40,7 +40,6 @@ workflow PRSmix {
             memory = memory
     }
 
-
     meta {
         author : "Buu Truong"
         email : "btruong@broadinstitute.org"
@@ -54,6 +53,7 @@ workflow PRSmix {
     }
 
 }
+
 
 task s1_harmonize_SNPeffects {
     input {
@@ -148,6 +148,7 @@ task s1_harmonize_SNPeffects {
 
 }
 
+
 task s2_computePRS {
     input {
         Boolean a_runStep2 = false
@@ -208,6 +209,7 @@ task s2_computePRS {
     }
 
 }
+
 
 task s3_combine_PRS {
     input {
