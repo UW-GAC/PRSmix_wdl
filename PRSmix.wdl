@@ -301,13 +301,13 @@ task s3_combine_PRS {
             system("mv *_time_PRSmix.txt prsmix_output")
             system("mv *_time_PRSmixPlus.txt prsmix_output")
 
-            system("tar -cvf prsmix_output.tar prsmix_output")
+            system("tar -cvzf prsmix_output.tar prsmix_output")
 
         RSCRIPT
     >>>
 
     output {
-        File prsmix_output = "prsmix_output.tar"
+        File prsmix_output = "prsmix_output.tar.gz"
     }
 
     runtime {
