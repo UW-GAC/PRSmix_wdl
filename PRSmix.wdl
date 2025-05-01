@@ -151,7 +151,6 @@ task s2_computePRS {
     }
 
     command <<<
-
         R --no-save << RSCRIPT
 
             library(PRSmix)
@@ -214,7 +213,6 @@ task s3_combine_PRS {
     }
 
     command <<<
-
         R --no-save << RSCRIPT
 
             library(PRSmix)
