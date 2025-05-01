@@ -57,8 +57,6 @@ workflow PRSmix {
 
 task s1_harmonize_SNPeffects {
     input {
-        File? s1_weight_file
-
         File? ref_file
         File? pgs_folder_tar 
         File? pgs_list
@@ -94,7 +92,6 @@ task s1_harmonize_SNPeffects {
             isheader = as.logical("~{isheader}")
             chunk_size = as.numeric(~{chunk_size})
             out = "~{out}"
-            s1_weight_file = "~{s1_weight_file}"
             ls()
 
             print(ref_file)
