@@ -236,7 +236,7 @@ task s3_combine_PRS {
             cat_covar_list = "~{cat_covar_list}"
             ncores = as.numeric("~{ncores}")
             is_extract_adjSNPeff = as.logical("~{is_extract_adjSNPeff}")
-            original_beta_files_list = ~{default="NULL" original_beta_files_list}
+            original_beta_files_list = "~{original_beta_files_list}"
             train_size_list = "~{train_size_list}"
             power_thres_list = "~{power_thres_list}"
             pval_thres_list = "~{pval_thres_list}"
@@ -248,6 +248,9 @@ task s3_combine_PRS {
                 cat_covar_list = NULL
             } else {
                 cat_covar_list = unlist(strsplit(cat_covar_list, split=","))
+            }
+            if {original_beta_files_list = ""} {
+                original_beta_files_list = NULL
             }
 
             covar_list = unlist(strsplit(covar_list, split=","))
