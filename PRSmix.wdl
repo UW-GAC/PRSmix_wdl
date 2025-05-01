@@ -33,7 +33,7 @@ workflow PRSmix {
 
     call s3_combine_PRS {
         input: 
-            #original_beta_files_list = select_first([s1_harmonize_SNPeffects.weight_out_file, s1_weight_file, ""]),
+            original_beta_files_list = s1_harmonize_SNPeffects.weight_out_file,
             score_files_list = select_first([s2_computePRS.score_out, score_inp]),
             disk = disk,
             ncores = ncores,
