@@ -57,7 +57,6 @@ workflow PRSmix {
 
 task s1_harmonize_SNPeffects {
     input {
-        Boolean a_runStep1 = false
         File? s1_weight_file
 
         File? ref_file
@@ -99,13 +98,6 @@ task s1_harmonize_SNPeffects {
             s1_weight_file = "~{s1_weight_file}"
             ls()
 
-            print(a_runStep1)
-            if (!a_runStep1) {
-                system(paste0("cp ", s1_weight_file, " ", out))
-                q()
-            }
-
-            ls()
             print(ref_file)
             print(pgs_folder_tar)
 
@@ -151,7 +143,6 @@ task s1_harmonize_SNPeffects {
 
 task s2_computePRS {
     input {
-        Boolean a_runStep2 = false
         File? score_inp
 
         File? bed 
@@ -183,12 +174,6 @@ task s2_computePRS {
             a_runStep2 = as.logical("~{a_runStep2}")
             score_inp = "~{score_inp}"
             ls()
-
-            print(a_runStep2)
-            if (!a_runStep2) {
-                system(paste0("cp ", score_inp, " ", out, ".sscore"))
-                q()
-            }
 
             compute_PRS(geno = geno, weight_file = weight_file, out = out, plink2_path="/usr/bin/plink2")
 
