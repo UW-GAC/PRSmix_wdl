@@ -249,7 +249,7 @@ task s3_combine_PRS {
             } else {
                 cat_covar_list = unlist(strsplit(cat_covar_list, split=","))
             }
-            if (original_beta_files_list = "") {
+            if (original_beta_files_list == "") {
                 original_beta_files_list = NULL
             }
 
