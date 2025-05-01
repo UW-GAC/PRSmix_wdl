@@ -142,8 +142,6 @@ task s1_harmonize_SNPeffects {
 
 task s2_computePRS {
     input {
-        File? score_inp
-
         File? bed 
         File? bim 
         File? fam 
@@ -169,7 +167,6 @@ task s2_computePRS {
             geno = substring(bed, 1, nchar(bed) - 4)
             weight_file = "~{weight_file}"
             out = "~{out}"
-            score_inp = "~{score_inp}"
             ls()
 
             compute_PRS(geno = geno, weight_file = weight_file, out = out, plink2_path="/usr/bin/plink2")
@@ -298,7 +295,7 @@ task s3_combine_PRS {
             system("mv *_time_PRSmix.txt prsmix_output")
             system("mv *_time_PRSmixPlus.txt prsmix_output")
 
-            system("tar -cvzf prsmix_output.tar prsmix_output")
+            system("tar -cvzf prsmix_output.tar.gz prsmix_output")
 
         RSCRIPT
     >>>

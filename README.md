@@ -4,7 +4,8 @@ The PRSmix package can be used to benchmark PRSs and compute the linear combinat
 
 NOTE: 
 - You can run all steps or run each of them individually (set a_runStep1 or a_runStep2 to true or false).
-- Please make sure ALL optional FILES for all steps are provided even if you do not run that step (you can use a dummy file)
+- If a_runStep1 is false and a_runStep2 is true, provide weight_file
+- if a_runStep1 and a_runStep2 are both false, provide score_files_list
 
 # Manual
 The pipeline contains 3 steps: 
