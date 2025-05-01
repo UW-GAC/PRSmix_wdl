@@ -94,7 +94,6 @@ task s1_harmonize_SNPeffects {
             isheader = as.logical("~{isheader}")
             chunk_size = as.numeric(~{chunk_size})
             out = "~{out}"
-            a_runStep1 = as.logical("~{a_runStep1}")
             s1_weight_file = "~{s1_weight_file}"
             ls()
 
@@ -158,8 +157,7 @@ task s2_computePRS {
 
     command <<<
 
-        R --no-save --args ${bed} ${weight_file} ${out} ${a_runStep2} ${score_inp} << RSCRIPT
-
+        R --no-save << RSCRIPT
 
             library(PRSmix)
             library(data.table)
@@ -171,7 +169,6 @@ task s2_computePRS {
             geno = substring(bed, 1, nchar(bed) - 4)
             weight_file = "~{weight_file}"
             out = "~{out}"
-            a_runStep2 = as.logical("~{a_runStep2}")
             score_inp = "~{score_inp}"
             ls()
 
